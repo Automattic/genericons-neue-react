@@ -53,3 +53,10 @@ const MyUploadButton = () => {
 - Hand edit to remove style from activity, send-to-tablet, tablet
 - Run convert.py which writes out js components
 
+
+### TODO
+
+- Update genericons-neue source to fix 3 icons that need hand editing
+- Switch svg to git subtree/submodule
+- Publish to NPM
+ 
