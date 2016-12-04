@@ -22,7 +22,7 @@ export default {component};
 
 """
 
-files = glob.glob("./svg/*.svg")
+files = glob.glob("./node_modules/genericons-neue/svg-min/*.svg")
 for f in files:
     ## setup names
     outfile = f.replace('./svg/', './icons/')
@@ -32,9 +32,9 @@ for f in files:
     component =name.replace('-', ' ')
     component = component.title()
     component = component.replace(' ', '')
-    
+
     print("{} => {} => {}".format(name, component, outfile))
-    
+
     # read in svg data
     inf = open(f, "r")
     data = inf.read()
