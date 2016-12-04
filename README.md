@@ -16,7 +16,7 @@ import CloudUpload from 'genericons-neue-react/icons/cloud-upload';
 const MyUploadButton = () => {
     return (
         <button>
-            <CloudUpload /> 
+            <CloudUpload />
             <span> Upload a new image </span>
         </button>
     )
@@ -36,7 +36,7 @@ import CloudUpload from 'genericons-neue-react/icons/cloud-upload';
 const MyUploadButton = () => {
     return (
         <button>
-            <CloudUpload fill="tomato" /> 
+            <CloudUpload fill="tomato" />
             <span> Upload a new image </span>
         </button>
     )
@@ -49,14 +49,14 @@ const MyUploadButton = () => {
 
 ### Build Process
 
-- Copy automattic/genericons-neue/svg-min to ./svg
-- Hand edit to remove style from activity, send-to-tablet, tablet
-- Run convert.py which writes out js components
+1. npm install
+2. run convert.py
 
 
 ### TODO
 
-- Update genericons-neue source to fix 3 icons that need hand editing
-- Switch svg to git subtree/submodule
-- Publish to NPM
- 
+- [x] Update genericons-neue source to fix 3 icons that need hand editing
+- [x] Switch SVG to use genericons-neue NPM module
+- [ ] Convert script to Javascript
+- [ ] Publish to NPM
+
