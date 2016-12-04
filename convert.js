@@ -20,6 +20,7 @@ const ${component} = (props) => {
 };
 
 export default ${component};
+
 `;
 }
 
@@ -39,7 +40,6 @@ fs.readdir(srcdir, (err, files) => {
             .join(' ');
 
         component = component.replace(/\s/g, '');
-        console.log(name, component, outfile);
 
         // read in svg data
         data = String( fs.readFileSync( path.join( srcdir, file ) ) );
