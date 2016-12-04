@@ -16,6 +16,9 @@
     "type": "git",
     "url": "github.com/tinkertinker/genericons-neue-react"
   },
+  "scripts": {
+    "build": "node convert.js"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.1",
