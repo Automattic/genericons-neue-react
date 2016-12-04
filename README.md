@@ -50,13 +50,13 @@ const MyUploadButton = () => {
 ### Build Process
 
 1. npm install
-2. run convert.py
+2. npm run build
 
 
 ### TODO
 
 - [x] Update genericons-neue source to fix 3 icons that need hand editing
 - [x] Switch SVG to use genericons-neue NPM module
-- [ ] Convert script to Javascript
+- [x] Convert script to Javascript
 - [ ] Publish to NPM
 
