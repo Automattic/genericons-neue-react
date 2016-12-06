@@ -32,12 +32,6 @@ const guarantee = ( fn, ... args ) => new Promise( ( resolve, reject ) => fn( ..
 	resolve( result );
 } ) );
 // read files f
-
-const l = ( message ) => result => {
-	console.log( message, result )
-	return result;
-}
-
 guarantee( mkdirp, outdir )
 .then( () => guarantee( fs.readdir, srcdir ) )
 .then( files => Promise.all( files.map( file => {
