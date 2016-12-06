@@ -1,11 +1,26 @@
+"use strict";
 
-import React from 'react';
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-const Day = (props) => {
-	return (
-        <svg  viewBox="0 0 16 16"><rect x="0" fill="none" width="16" height="16"/><g {...props}><path d="M12 3h-1V2H9v1H7V2H5v1H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 8H8V6.2l-.8.3-.4-1L9 4.8V11z"/></g></svg>
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Day = function Day(props) {
+	return _react2.default.createElement(
+		"svg",
+		{ viewBox: "0 0 16 16" },
+		_react2.default.createElement("rect", { x: "0", fill: "none", width: "16", height: "16" }),
+		_react2.default.createElement(
+			"g",
+			props,
+			_react2.default.createElement("path", { d: "M12 3h-1V2H9v1H7V2H5v1H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 8H8V6.2l-.8.3-.4-1L9 4.8V11z" })
+		)
 	);
 };
 
-export default Day;
-
+exports.default = Day;
