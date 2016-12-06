@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp');
 
 // source directory of SVGs
 srcdir = path.resolve( './node_modules/genericons-neue/svg-min/' );
-outdir = path.resolve( './src' );
+outdir = path.resolve( './icons' );
 
 // React Component template
 const template = (component, svg ) => {
@@ -68,7 +68,11 @@ guarantee( mkdirp, outdir )
   outdata = template( component, data );
 
   // output javascript file
-  return guarantee( fs.writeFile, path.join( outdir, outfile ), outdata );
+  return guarantee(
+		fs.writeFile,
+		`${path.join( outdir, path.basename( outfile, '.js' ) )}.jsx`,
+		outdata
+	);
 	
 } ) ) )
 .then(
