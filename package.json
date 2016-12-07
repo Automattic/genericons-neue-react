@@ -4,6 +4,7 @@
   "description": "Genericons Neue icon set to be used with React",
   "author": "Automattic",
   "license": "GPL-2.0",
+  "files": [ "icons" ],
   "keywords": [
     "react",
     "reactjs",
@@ -18,7 +19,7 @@
   },
   "scripts": {
     "build": "rm -r icons/; node convert.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build; babel --out-dir icons src/icons"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

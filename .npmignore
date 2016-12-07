@@ -1,6 +1,0 @@
-src/
-convert.js
-*.tgz
-.babelrc
-.eslintrc
-.npmignore

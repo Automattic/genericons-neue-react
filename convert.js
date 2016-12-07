@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp');
 
 // source directory of SVGs
 srcdir = path.resolve( './node_modules/genericons-neue/svg-min/' );
-outdir = path.resolve( './icons' );
+outdir = path.resolve( './src/icons' );
 
 // React Component template
 const template = (component, svg ) => {
