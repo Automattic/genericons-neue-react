@@ -1,9 +1,12 @@
 {
   "name": "genericons-neue-react",
-  "version": "1.0.0",
+  "version": "1.0.0-3",
   "description": "Genericons Neue icon set to be used with React",
   "author": "Automattic",
   "license": "GPL-2.0",
+  "files": [
+    "icons"
+  ],
   "keywords": [
     "react",
     "reactjs",
@@ -17,7 +20,8 @@
     "url": "github.com/automattic/genericons-neue-react"
   },
   "scripts": {
-    "build": "node convert.js"
+    "build": "rm -r icons/; node convert.js",
+    "prepublish": "npm run build; babel --out-dir icons src/icons"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -27,6 +31,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "eslint": "^3.11.1",
     "eslint-plugin-react": "^6.7.1",
-    "genericons-neue": "automattic/genericons-neue#62579d8"
+    "genericons-neue": "automattic/genericons-neue#62579d8",
+    "mkdirp": "^0.5.1"
   }
 }

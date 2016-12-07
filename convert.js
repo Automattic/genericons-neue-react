@@ -3,10 +3,11 @@
 
 const fs = require('fs');
 const path = require('path');
+const mkdirp = require('mkdirp');
 
 // source directory of SVGs
-srcdir = './node_modules/genericons-neue/svg-min/';
-outdir = './icons/';
+srcdir = path.resolve( './node_modules/genericons-neue/svg-min/' );
+outdir = path.resolve( './src/icons' );
 
 // React Component template
 const template = (component, svg ) => {
@@ -24,37 +25,51 @@ export default ${component};
 `;
 }
 
+const guarantee = ( fn, ... args ) => new Promise( ( resolve, reject ) => fn( ... args, ( error, result ) => {
+	if ( error ) {
+		return reject( error );
+	}
+	resolve( result );
+} ) );
 // read files f
-fs.readdir(srcdir, (err, files) => {
-  files.forEach(file => {
-        // setup names
-        outfile = file.replace('./svg/', './icons/');
-        outfile = outfile.replace('.svg', '.js');
-        name = file.replace('./svg/', '');
-        name = name.replace('.svg', '');
-        component = name.replace(/-/g, ' ');
+guarantee( mkdirp, outdir )
+.then( () => guarantee( fs.readdir, srcdir ) )
+.then( files => Promise.all( files.map( file => {
+  // setup names
+  outfile = file.replace('./svg/', './icons/');
+  outfile = outfile.replace('.svg', '.js');
+  name = file.replace('./svg/', '');
+  name = name.replace('.svg', '');
+  component = name.replace(/-/g, ' ');
 
-        // title case 
-        component = component.split(' ')
-            .map(i => i[0].toUpperCase() + i.substring(1))
-            .join(' ');
+  // title case 
+  component = component.split(' ')
+      .map(i => i[0].toUpperCase() + i.substring(1))
+      .join(' ');
 
-        component = component.replace(/\s/g, '');
+  component = component.replace(/\s/g, '');
 
-        // read in svg data
-        data = String( fs.readFileSync( path.join( srcdir, file ) ) );
+  // read in svg data
+  data = String( fs.readFileSync( path.join( srcdir, file ) ) );
 
-        // scrub the svg
-        data = data.replace('xmlns="http://www.w3.org/2000/svg"', '');
+  // scrub the svg
+  data = data.replace('xmlns="http://www.w3.org/2000/svg"', '');
 
-        // add props to <g>
-        data = data.replace( '<g>', '<g {...props}>' );
-        
-        // create component from template
-        outdata = template( component, data );
+  // add props to <g>
+  data = data.replace( '<g>', '<g {...props}>' );
+  
+  // create component from template
+  outdata = template( component, data );
 
-        // output javascript file
-        fs.writeFileSync( path.join( outdir, outfile ), outdata );
-
-    });
-})
+  // output javascript file
+  return guarantee(
+		fs.writeFile,
+		`${path.join( outdir, path.basename( outfile, '.js' ) )}.jsx`,
+		outdata
+	);
+	
+} ) ) )
+.then(
+	files => console.log( 'Completed generating %d icons in %s', files.length, outdir ),
+	e => console.error( 'Failed to transform files', e )
+)
