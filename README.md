@@ -6,7 +6,15 @@ You only need to import the icons you use, so no extra overhead.
 
 ### Usage
 
-Here's an example usage:
+Here's an example on using within your React project.
+
+1. First install the package
+
+```bash
+$ npm install --save genericons-neue-react
+```
+
+2. Using inside a Component
 
 ```js
 
@@ -47,16 +55,23 @@ const MyUploadButton = () => {
 
 
 
-### Build Process
+### Building this Package
 
-1. npm install
-2. npm run build
+The following info is for creating this package, if you just want to use the
+icons in your project, see Usage above.
 
+The source SVG files are from <a
+href="https://github.com/automattic/genericons-neue">automattic/genericons-neue</a>
+repository, which gets installed as a dev dependcy.
 
-### TODO
+The `convert.js` script runs through the SVG files and creates React Components
+(jsx), using the filename as the component name. Component names are CamelCase
+so `cloud-upload.svg` becomes `CloudUpload`.
 
-- [x] Update genericons-neue source to fix 3 icons that need hand editing
-- [x] Switch SVG to use genericons-neue NPM module
-- [x] Convert script to Javascript
-- [ ] Publish to NPM
+This build step can be run using: `npm run build` and creates the components in
+`src` directory.
+
+Next we convert the JSX components in `src` directory to vanilla javascript
+using babel and store the results in `icons` directory.
+
 
